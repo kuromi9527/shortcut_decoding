@@ -1,22 +1,14 @@
 # Shortcut Decoding
 
-Official repository for the paper:
-
-**Think Faster Than Words: Efficient LLM Chain-of-Thought Reasoning via Dynamic Shortcut Decoding**
-
-Fan Liu\*, Yanhao Wang†, Min Zhang†, Zhikang Chen, Zeyuan Li\*, Lewei He†, Jiahui Pan
-
-<sup>\* Equal contribution. † Corresponding authors.</sup>
-
----
-
-## Overview
+A plug-and-play framework for accelerating Chain-of-Thought (CoT) reasoning in Large Reasoning Models (LRMs) without any fine-tuning of the base model.
 
 ![Shortcut Decoding framework](figs/framework.png)
 
-**Shortcut Decoding** is a plug-and-play framework for accelerating Chain-of-Thought (CoT) reasoning in Large Reasoning Models (LRMs). Recent LRMs such as OpenAI-o1 and DeepSeek-R1 scale test-time compute to achieve strong reasoning performance, but they frequently *overthink* — generating redundant verification and digressions long after the answer is internally resolved. This leads to substantial computational cost with negligible accuracy gains.
+## Overview
 
-Our framework is grounded in a simple empirical observation: LLMs *think faster than they speak*. The high-dimensional internal representation often converges to the correct answer well before the textual CoT concludes. Motivated by this misalignment between internal belief saturation and external realization, Shortcut Decoding detects such convergence during generation and switches directly to final-answer production, skipping the remaining redundant steps.
+Recent LRMs such as OpenAI-o1 and DeepSeek-R1 scale test-time compute to achieve strong reasoning performance, but they frequently *overthink* — generating redundant verification and digressions long after the answer is internally resolved. This leads to substantial computational cost with negligible accuracy gains.
+
+Our framework is grounded in a simple empirical observation: LLMs *think faster than they speak*. The high-dimensional internal representation often converges to the correct answer well before the textual CoT concludes. Motivated by this misalignment between internal belief saturation and external realization, **Shortcut Decoding** detects such convergence during generation and switches directly to final-answer production, skipping the remaining redundant steps.
 
 ## Key Ideas
 
@@ -41,23 +33,3 @@ Across multiple mathematical reasoning benchmarks, Shortcut Decoding:
 ## Code & Resources
 
 Coming soon — code, probes, and evaluation scripts will be released here shortly. Stay tuned!
-
-## Citation
-
-If you find this work useful, please consider citing:
-
-```bibtex
-@inproceedings{liu2026shortcut,
-  title  = {Think Faster Than Words: Efficient LLM Chain-of-Thought Reasoning via Dynamic Shortcut Decoding},
-  author = {Liu, Fan and Wang, Yanhao and Zhang, Min and Chen, Zhikang and Li, Zeyuan and He, Lewei and Pan, Jiahui},
-  year   = {2026}
-}
-```
-
-## Contact
-
-For questions about the paper or repository, please reach out to the corresponding authors:
-
-- Yanhao Wang — <yhwang@dase.ecnu.edu.cn>
-- Min Zhang — <mzhang@cs.ecnu.edu.cn>
-- Lewei He — <helewei@m.scnu.edu.cn>
